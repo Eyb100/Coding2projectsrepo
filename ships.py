@@ -53,3 +53,8 @@ class Ship:
                 self.color = (255, 0, 0)
                 self.collided = True
                 break
+
+
+
+
+
