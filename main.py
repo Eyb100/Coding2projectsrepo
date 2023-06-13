@@ -2,7 +2,7 @@ import sys
 import pygame
 from pygame.locals import *
 from random import random
-from ship import Ship
+from ships import Ship
 from asteroid import Asteroid
 import numpy as np
 
