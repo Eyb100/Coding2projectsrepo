@@ -21,9 +21,9 @@ class Ship:
     # Update properties of the ship
     def update(self, mouse_pos, asteroids, game_status):
         # Action required!
-
+        #done
         # Set position of ship based on given parameter
-        self.pos = self.pos
+        self.pos = np.array(mouse_pos)
 
         # Determine rotation angle of ship to point at cursor
         self.angle = self.angle
