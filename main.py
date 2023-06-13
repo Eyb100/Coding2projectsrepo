@@ -5,6 +5,7 @@ from random import random
 from ships import Ship
 from asteroid import Asteroid
 import numpy as np
+import math
 
 # SETUP
 # Initialize program
@@ -33,6 +34,7 @@ asteroids = [
         y=1,
         radius=20,
         surface=DISPLAYSURF
+        #speed = 0
     )
     for _ in range(0, 10)
 ]
