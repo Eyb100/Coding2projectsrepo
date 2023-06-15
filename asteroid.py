@@ -9,8 +9,8 @@ class Asteroid:
         # Position of the tip of the asteroid
         self.pos = np.array([x, y])
         # Additional properties goes here:
-        self.angle = random.random() * 2 * math.pi  # Random initial angle
-        self.speed = random.random() * 4 + 1  # Random initial speed between 1 and 5
+        self.angle = random.random() * 2 * math.pi
+        self.speed = random.random() * 4 + 1
 
         # Leave the rest of these properties
         self.surface = surface

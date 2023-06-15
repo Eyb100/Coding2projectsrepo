@@ -10,16 +10,16 @@ class Ship:
         # Rotation angle of the ship relative to the tip of the ship
         self.angle = 0.0
         # Additional properties goes here:
-
+        self.velocity = (0, 0)
 
         # Leave the rest of these properties
         self.surface = surface
         self.radius = 20
         self.color = (0, 0, 0)
         self.collided = False
-        self.velocity = (0,0)
 
     # Update properties of the ship
+    #changed
     def update(self, mouse_pos, asteroids, game_status):
     # Set target position based on mouse position
         target_pos = np.array(mouse_pos)
