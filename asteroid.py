@@ -16,28 +16,30 @@ class Asteroid:
         self.surface = surface
         self.radius = radius
 
-    def update(self, asteroids):
+    def update(self, asteroids,game_status):
             # Action required!
-            #changed
-            # Calculate the change in x and y coordinates based on the angle and speed
-            dx = self.speed * math.cos(self.angle)
-            dy = self.speed * math.sin(self.angle)
-            # Update the position of the asteroid
-            self.pos[0] += dx
-            self.pos[1] += dy
+        if game_status != "started":
+            return
+         #changed
+        # Calculate the change in x and y coordinates based on the angle and speed
+        dx = self.speed * math.cos(self.angle)
+        dy = self.speed * math.sin(self.angle)
+        # Update the position of the asteroid
+        self.pos[0] += dx
+        self.pos[1] += dy
 
-            # Wrap asteroid around the edges so it always stays on screen
-            if self.pos[0] > self.surface.get_width():
-                self.pos[0] = 0
-            elif self.pos[0] < 0:
-                self.pos[0] = self.surface.get_width()
+        # Wrap asteroid around the edges so it always stays on screen
+        if self.pos[0] > self.surface.get_width():
+            self.pos[0] = 0
+        elif self.pos[0] < 0:
+            self.pos[0] = self.surface.get_width()
 
-            if self.pos[1] > self.surface.get_height():
-                self.pos[1] = 0
-            elif self.pos[1] < 0:
-                self.pos[1] = self.surface.get_height()
+        if self.pos[1] > self.surface.get_height():
+            self.pos[1] = 0
+        elif self.pos[1] < 0:
+            self.pos[1] = self.surface.get_height()
 
-        # Draw the asteroid onto the canvas
-    #changed
+ # Draw the asteroid onto the canvas
+#changed
     def draw(self):
         pygame.draw.circle(self.surface, (0, 0, 255), (int(self.pos[0]), int(self.pos[1])), self.radius)

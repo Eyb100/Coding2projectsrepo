@@ -66,7 +66,7 @@ def update():
         game_status = "ended"
 
     for asteroid in asteroids:
-        asteroid.update(asteroids)
+        asteroid.update(asteroids,game_status)
 
 # DRAW LOOP
 def draw():
