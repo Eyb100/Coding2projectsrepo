@@ -27,21 +27,18 @@ class Ship:
         # Calculate direction to the target
         direction = target_pos - self.pos
         distance = math.dist(self.pos, target_pos)
-
         # Calculate the velocity based on the distance
         max_speed = 5.0
         desired_speed = max_speed * (distance / 100)
         desired_velocity = desired_speed * direction / distance if distance > 0 else np.array([0, 0])
-
         # Calculate acceleration to adjust the velocity
-        acceleration = (desired_velocity - self.velocity) * 0.1  # Adjust this value to control the ship's smoothness
-
+        acceleration = (desired_velocity - self.velocity) * 0.1
         # Update velocity and position
         self.velocity += acceleration
         self.pos += self.velocity
 
         # Determine rotation angle of ship to point behind the cursor
-        self.angle = math.atan2(-self.velocity[1], -self.velocity[0]) - math.pi / 2
+        self.angle = math.atan2(-self.velocity[1], -self.velocity[0])
 
         # Leave the rest of the code
         # Check for collision
