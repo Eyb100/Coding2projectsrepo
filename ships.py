@@ -17,16 +17,31 @@ class Ship:
         self.radius = 20
         self.color = (0, 0, 0)
         self.collided = False
+        self.velocity = (0,0)
 
     # Update properties of the ship
     def update(self, mouse_pos, asteroids, game_status):
-        # Action required!
-        #done
-        # Set position of ship based on given parameter
-        self.pos = np.array(mouse_pos)
+    # Set target position based on mouse position
+        target_pos = np.array(mouse_pos)
 
-        # Determine rotation angle of ship to point at cursor
-        self.angle = self.angle
+        # Calculate direction to the target
+        direction = target_pos - self.pos
+        distance = math.dist(self.pos, target_pos)
+
+        # Calculate the velocity based on the distance
+        max_speed = 5.0
+        desired_speed = max_speed * (distance / 100)
+        desired_velocity = desired_speed * direction / distance if distance > 0 else np.array([0, 0])
+
+        # Calculate acceleration to adjust the velocity
+        acceleration = (desired_velocity - self.velocity) * 0.1  # Adjust this value to control the ship's smoothness
+
+        # Update velocity and position
+        self.velocity += acceleration
+        self.pos += self.velocity
+
+        # Determine rotation angle of ship to point behind the cursor
+        self.angle = math.atan2(-self.velocity[1], -self.velocity[0]) - math.pi / 2
 
         # Leave the rest of the code
         # Check for collision
@@ -49,7 +64,7 @@ class Ship:
     # Detect whether ship has collided with an asteroid
     def collision(self, asteroids, game_status):
         for asteroid in asteroids:
-            if np.linalg.norm(asteroid.pos - self.pos) < (asteroid.radius + self.radius):
+            if math.dist(asteroid.pos, self.pos) < (asteroid.radius + self.radius):
                 self.color = (255, 0, 0)
                 self.collided = True
                 break
